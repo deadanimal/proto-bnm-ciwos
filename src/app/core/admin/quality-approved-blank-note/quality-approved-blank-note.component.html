@@ -1,0 +1,497 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-12">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Approved Bank Note Assessment Sampling
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-pencil-ruler text-dark"> </i>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark">
+                  Quality Management
+                </a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item active">
+                Approved Bank Note Assessment Sampling
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">List of Quality Assessment</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    records
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Issuance Date by JPW CPS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.issuancedate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Receive Date by Mint QMS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dateqms }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Return Date by Mint QMS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.returndate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Receive Date by JPW CPCM/NMS KWG </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.datejpw }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Supplier Name </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.name }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Denomination </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.denomination }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Quantity Issued </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.qissue }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Quantity Returned </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.qreturn }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Action</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="Edit"
+                    (click)="openModal(viewInvoice)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="far fa-eye"> </i>
+                    </span>
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Verified Coin Blank Sample</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    records
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Issuance Date by JPW CPS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.issuancedate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Receive Date by Mint QMS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dateqms }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Return Date by Mint QMS </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.returndate }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Receive Date by JPW CPCM/NMS KWG </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.datejpw }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Supplier Name </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.name }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Denomination </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.denomination }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Quantity Issued </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.qissue }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span> Quantity Returned </span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.qreturn }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Action</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="Edit"
+                    (click)="openModal(viewInvoice)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="far fa-eye"> </i>
+                    </span>
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #viewInvoice>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      View Invoice
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <!-- BEGIN INVOICE -->
+      <div class="col-xl-12">
+        <div class="grid invoice">
+          <div class="grid-body">
+            <div class="invoice-title">
+              <div class="row">
+                <div class="col-xl-12">
+                  <img [src]="imgLogo" alt="" height="35" />
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-xl-12">
+                  <h2>
+                    invoice<br />
+                    <span class="small">order #1082</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-xl-6">
+                <address>
+                  <strong>Billed To:</strong><br />
+                  Twitter, Inc.<br />
+                  795 Folsom Ave, Suite 600<br />
+                  San Francisco, CA 94107<br />
+                  <abbr title="Phone">P:</abbr> (123) 456-7890
+                </address>
+              </div>
+              <div class="col-xl-6 text-right">
+                <address>
+                  <strong>Shipped To:</strong><br />
+                  Elaine Hernandez<br />
+                  P. Sherman 42,<br />
+                  Wallaby Way, Sidney<br />
+                  <abbr title="Phone">P:</abbr> (123) 345-6789
+                </address>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-6">
+                <address>
+                  <strong>Payment Method:</strong><br />
+                  Visa ending **** 1234<br />
+                  ali.imran@gmail.com<br />
+                </address>
+              </div>
+              <div class="col-xl-6 text-right">
+                <address>
+                  <strong>Order Date:</strong><br />
+                  17/06/2020
+                </address>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>ORDER SUMMARY</h3>
+                <table class="table table-striped">
+                  <thead>
+                    <tr class="line">
+                      <td><strong>#</strong></td>
+                      <td class="text-center"><strong>PROJECT</strong></td>
+                      <td class="text-center"><strong>HRS</strong></td>
+                      <td class="text-right"><strong>RATE</strong></td>
+                      <td class="text-right"><strong>SUBTOTAL</strong></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <strong>Template Design</strong><br />
+                        <!-- A website template
+                            is a pre-designed webpage, or set of webpages, that
+                            anyone can modify with their own content and images to
+                            setup a website. -->
+                      </td>
+                      <td class="text-center">15</td>
+                      <td class="text-center">RM75</td>
+                      <td class="text-right">RM1,125.00</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>
+                        <strong>Template Development</strong><br />
+                        <!-- Web
+                            development is a broad term for the work involved in
+                            developing a web site for the Internet (World Wide Web)
+                            or an intranet (a private network). -->
+                      </td>
+                      <td class="text-center">15</td>
+                      <td class="text-center">RM75</td>
+                      <td class="text-right">RM1,125.00</td>
+                    </tr>
+                    <tr class="line">
+                      <td>3</td>
+                      <td>
+                        <strong>Testing</strong><br />
+                        <!-- Take measures to check the
+                            quality, performance, or reliability of (something),
+                            especially before putting it into widespread use or
+                            practice. -->
+                      </td>
+                      <td class="text-center">2</td>
+                      <td class="text-center">RM75</td>
+                      <td class="text-right">RM150.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td class="text-right"><strong>SST</strong></td>
+                      <td class="text-right"><strong>N/A</strong></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td class="text-right"><strong>Total</strong></td>
+                      <td class="text-right"><strong>RM2,400.00</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-right identity">
+                <!-- <p>Designer identity<br /><strong>Jeffrey Williams</strong></p> -->
+                <img [src]="imgLogo1" alt="" height="250" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END INVOICE -->
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-success"
+      type="button"
+      title="Acknowledgment Receipt"
+      (click)="notification()"
+    >
+      Print
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

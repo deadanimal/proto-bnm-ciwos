@@ -1,0 +1,534 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-12">
+          <h6 class="h2 text-dark d-inline-block mb-0">Placement & Movement</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-boxes text-dark"> </i>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="text-dark">
+                  Iventory Management
+                </a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item active">
+                Placement & Movement
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Soil Level Test Performance</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartdivadminqiventoryplacement1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Soil Level Test Performance</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartdivadminqiventoryplacement2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Assets Location</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div
+            style="height: 400px"
+            leaflet
+            [leafletOptions]="options"
+            (leafletMapReady)="onMapReady($event)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">Location Monitoring</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Search here..."
+                />
+              </div>
+            </div>
+            <div class="col-2 p-1">
+              <button class="btn btn-success btn-sm">Search</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">No.</th>
+
+                  <th scope="col">Location</th>
+
+                  <th scope="col">ID</th>
+
+                  <th scope="col">Date</th>
+
+                  <th scope="col">Officer on Duty</th>
+
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody class="list">
+                <tr>
+                  <td>1</td>
+                  <td>Semenyih</td>
+                  <td>#54678</td>
+                  <td>29/02/2020</td>
+                  <td>Abu Bakar</td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(viewDetail)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      placement="top"
+                      (click)="delete()"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-default btn-sm"
+                      placement="top"
+                      (click)="successSwal('printed')"
+                    >
+                      <i class="fas fa-print"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>Beranang</td>
+                  <td>#98465</td>
+                  <td>20/02/2020</td>
+                  <td>Umar</td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(viewDetail)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      placement="top"
+                      (click)="delete()"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-default btn-sm"
+                      placement="top"
+                      (click)="successSwal('printed')"
+                    >
+                      <i class="fas fa-print"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>Rawang</td>
+                  <td>#74635</td>
+                  <td>14/02/2020</td>
+                  <td>Uthman</td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(viewDetail)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      placement="top"
+                      (click)="delete()"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-default btn-sm"
+                      placement="top"
+                      (click)="successSwal('printed')"
+                    >
+                      <i class="fas fa-print"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>4</td>
+                  <td>Sabak Bernam</td>
+                  <td>#53746</td>
+                  <td>02/02/2020</td>
+                  <td>Ali</td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(viewDetail)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      placement="top"
+                      (click)="delete()"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn btn-default btn-sm"
+                      placement="top"
+                      (click)="successSwal('printed')"
+                    >
+                      <i class="fas fa-print"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mt-2 mb-0">List of Records</h5>
+            </div>
+            <div class="col text-right">
+              <button class="btn btn-default" (click)="openModal(newMove)">
+                New Movement
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Search here..."
+                />
+              </div>
+            </div>
+            <div class="col-2 p-1">
+              <button class="btn btn-success btn-sm">Search</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">No</th>
+
+                  <th scope="col">Asset Name</th>
+
+                  <th scope="col">ID</th>
+
+                  <th scope="col">Origin</th>
+
+                  <th scope="col">Tempoprary Location</th>
+
+                  <th scope="col">Date</th>
+
+                  <th scope="col">Status</th>
+
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody class="list">
+                <tr>
+                  <td>1</td>
+                  <td>Coins 1.1</td>
+                  <td>PT-5764</td>
+                  <td>Petaling Jaya</td>
+                  <td>Gombak</td>
+                  <td>31/01/2020</td>
+                  <td><span class="badge badge-warning">In Process</span></td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(newMove)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>Notes 2.4</td>
+                  <td>PT-7465</td>
+                  <td>Semenyih</td>
+                  <td>Beranang</td>
+                  <td>31/01/2020</td>
+                  <td><span class="badge badge-warning">In Process</span></td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(newMove)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>Local Specimen</td>
+                  <td>PT-4756</td>
+                  <td>Gombak</td>
+                  <td>Selayang</td>
+                  <td>29/02/2020</td>
+                  <td><span class="badge badge-success">Done</span></td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(newMove)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>4</td>
+                  <td>Empty Pallet</td>
+                  <td>PT-4365</td>
+                  <td>Rawang</td>
+                  <td>Slim River</td>
+                  <td>30/03/2020</td>
+                  <td><span class="badge badge-success">Done</span></td>
+                  <td>
+                    <button
+                      class="btn btn-success btn-sm"
+                      placement="top"
+                      (click)="openModal(newMove)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #viewDetail>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Update Information
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Location Name</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Officer on Duty</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="successSwal('updated')"
+    >
+      Update
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #newMove>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Update Information
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Asset Name</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">ID</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Origin</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Temporary Location</label>
+
+          <input class="form-control" placeholder="Type here..." type="text" />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label">Status</label>
+
+          <select class="form-control">
+            <option hidden selected>Please pick</option>
+            <option value="1">New</option>
+            <option value="2">Update</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="successSwal('updated')"
+    >
+      Update
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
