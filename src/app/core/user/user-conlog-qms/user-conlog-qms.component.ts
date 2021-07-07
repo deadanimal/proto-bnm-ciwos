@@ -20,11 +20,11 @@ export enum SelectionType {
 }
 
 @Component({
-  selector: "app-consignment-logistic-ocr",
-  templateUrl: "./consignment-logistic-ocr.component.html",
-  styleUrls: ["./consignment-logistic-ocr.component.scss"],
+  selector: "app-user-conlog-qms",
+  templateUrl: "./user-conlog-qms.component.html",
+  styleUrls: ["./user-conlog-qms.component.scss"],
 })
-export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
+export class UserConlogQmsComponent implements OnInit {
   // Chart
   private chart1: any;
   private chart2: any;
@@ -271,17 +271,17 @@ export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
 
   getCharts() {
     this.zone.runOutsideAngular(() => {
-      this.getChartAdminConsLogOCR1();
-      this.getChartAdminConsLogOCR2();
+      this.getChartAdminConsLogQMS1();
+      this.getChartAdminConsLogQMS2();
     });
   }
 
-  getChartAdminConsLogOCR1() {
+  getChartAdminConsLogQMS1() {
     am4core.useTheme(am4themes_dataviz);
     am4core.useTheme(am4themes_animated);
     // Themes end
 
-    let chart = am4core.create("chartdivadminconlogocr1", am4charts.PieChart3D);
+    let chart = am4core.create("chartdivuserconlogqms1", am4charts.PieChart3D);
     chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
     //chart.legend = new am4charts.Legend();
@@ -314,13 +314,13 @@ export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
     this.chart1 = chart;
   }
 
-  getChartAdminConsLogOCR2() {
+  getChartAdminConsLogQMS2() {
     am4core.useTheme(am4themes_dataviz);
     am4core.useTheme(am4themes_animated);
     // Themes end
 
     // Create chart instance
-    let chart = am4core.create("chartdivadminconlogocr2", am4charts.XYChart3D);
+    let chart = am4core.create("chartdivuserconlogqms2", am4charts.XYChart3D);
 
     // Add data
     chart.data = [

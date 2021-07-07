@@ -45,20 +45,20 @@ export const ROUTES: RouteInfo[] = [
       { path: 'tender-management', title: 'Tender Management', type: 'link' }
     ]
   },
-  {
-    path: '/admin/consignment-logistic',
-    title: 'Consigment & Logistic',
-    type: 'sub',
-    icontype: 'fas fa-luggage-cart text-dark',
-    collapse: 'consignment-logistic',
-    isCollapsed: true,
-    children: [
-      { path: 'supplier', title: 'Supplier', type: 'link' },
-      { path: 'qms', title: 'QMS', type: 'link' },
-      { path: 'ocr', title: 'OCR', type: 'link' },
-      { path: 'wms', title: 'WMS', type: 'link' },
-    ]
-  },
+  // {
+  //   path: '/admin/consignment-logistic',
+  //   title: 'Consigment & Logistic',
+  //   type: 'sub',
+  //   icontype: 'fas fa-luggage-cart text-dark',
+  //   collapse: 'consignment-logistic',
+  //   isCollapsed: true,
+  //   children: [
+  //     { path: 'supplier', title: 'Supplier', type: 'link' },
+  //     { path: 'qms', title: 'QMS', type: 'link' },
+  //     { path: 'ocr', title: 'OCR', type: 'link' },
+  //     { path: 'wms', title: 'WMS', type: 'link' },
+  //   ]
+  // },
   {
     path: '/admin/iventory',
     title: 'Iventory Management',
@@ -71,25 +71,25 @@ export const ROUTES: RouteInfo[] = [
       { path: 'placement-movement', title: 'Placement & Movement', type: 'link' },
     ]
   },
-  {
-    path: '/admin/distribution',
-    title: 'Distribution',
-    type: 'link',
-    icontype: 'fas fa-people-carry text-dark'
-  },
-  {
-    path: '/admin/receiving-issuance',
-    title: 'Receiving & Issuance',
-    type: 'sub',
-    icontype: 'fas fa-hands-helping text-dark',
-    collapse: 'receiving-issuance',
-    isCollapsed: true,
-    children: [
-      { path: 'production-planner', title: 'Production Planner', type: 'link' },
-      { path: 'mes', title: 'MES', type: 'link' },
-      { path: 'production-personal', title: 'Production Personal', type: 'link' },
-    ]
-  },
+  // {
+  //   path: '/admin/distribution',
+  //   title: 'Distribution',
+  //   type: 'link',
+  //   icontype: 'fas fa-people-carry text-dark'
+  // },
+  // {
+  //   path: '/admin/receiving-issuance',
+  //   title: 'Receiving & Issuance',
+  //   type: 'sub',
+  //   icontype: 'fas fa-hands-helping text-dark',
+  //   collapse: 'receiving-issuance',
+  //   isCollapsed: true,
+  //   children: [
+  //     { path: 'production-planner', title: 'Production Planner', type: 'link' },
+  //     { path: 'mes', title: 'MES', type: 'link' },
+  //     { path: 'production-personal', title: 'Production Personal', type: 'link' },
+  //   ]
+  // },
   {
     path: '/admin/quality',
     title: 'Quality Management',
@@ -168,12 +168,46 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 export const ROUTESUSER: RouteInfo[] = [
+  // {
+  //   path: '/user/dashboard',
+  //   title: 'Dashboard',
+  //   type: 'link',
+  //   icontype: 'fas fa-desktop text-dark'
+  // },
   {
-    path: '/user/dashboard',
-    title: 'Dashboard',
-    type: 'link',
-    icontype: 'fas fa-desktop text-warning'
+    path: '/user/consignment-logistic',
+    title: 'Consigment & Logistic',
+    type: 'sub',
+    icontype: 'fas fa-luggage-cart text-dark',
+    collapse: 'consignment-logistic',
+    isCollapsed: true,
+    children: [
+      { path: 'supplier', title: 'Supplier', type: 'link' },
+      { path: 'qms', title: 'QMS', type: 'link' },
+      { path: 'ocr', title: 'OCR', type: 'link' },
+      { path: 'wms', title: 'WMS', type: 'link' },
+    ]
   },
+  {
+    path: '/user/distribution',
+    title: 'Distribution',
+    type: 'link',
+    icontype: 'fas fa-people-carry text-dark'
+  },
+  {
+    path: '/user/receiving-issuance',
+    title: 'Receiving & Issuance',
+    type: 'sub',
+    icontype: 'fas fa-hands-helping text-dark',
+    collapse: 'receiving-issuance',
+    isCollapsed: true,
+    children: [
+      { path: 'production-planner', title: 'Production Planner', type: 'link' },
+      { path: 'mes', title: 'MES', type: 'link' },
+      { path: 'production-personal', title: 'Production Personal', type: 'link' },
+    ]
+  },
+
   /*,
   {
     path: '/maintenance',

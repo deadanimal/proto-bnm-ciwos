@@ -20,11 +20,11 @@ export enum SelectionType {
 }
 
 @Component({
-  selector: "app-consignment-logistic-ocr",
-  templateUrl: "./consignment-logistic-ocr.component.html",
-  styleUrls: ["./consignment-logistic-ocr.component.scss"],
+  selector: "app-user-conlog-ocr",
+  templateUrl: "./user-conlog-ocr.component.html",
+  styleUrls: ["./user-conlog-ocr.component.scss"],
 })
-export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
+export class UserConlogOcrComponent implements OnInit {
   // Chart
   private chart1: any;
   private chart2: any;
@@ -281,7 +281,7 @@ export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
     am4core.useTheme(am4themes_animated);
     // Themes end
 
-    let chart = am4core.create("chartdivadminconlogocr1", am4charts.PieChart3D);
+    let chart = am4core.create("chartdivuserconlogocr1", am4charts.PieChart3D);
     chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
     //chart.legend = new am4charts.Legend();
@@ -320,7 +320,7 @@ export class ConsignmentLogisticOcrComponent implements OnInit, OnDestroy {
     // Themes end
 
     // Create chart instance
-    let chart = am4core.create("chartdivadminconlogocr2", am4charts.XYChart3D);
+    let chart = am4core.create("chartdivuserconlogocr2", am4charts.XYChart3D);
 
     // Add data
     chart.data = [
